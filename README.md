@@ -139,23 +139,7 @@ AWS Infrastructure
 ## 🔄 Deployment Workflow
 
 ```text
-Code Commit
-      →
-GitHub Repository
-      →
-Webhook Trigger
-      →
-Jenkins Pipeline
-      →
-Terraform Init
-      →
-Terraform Plan
-      →
-Approval (Production Only)
-      →
-Terraform Apply
-      →
-AWS Resource Provisioning
+Code Commit → GitHub Repository → Webhook Trigger → Jenkins Pipeline → Terraform Init → Terraform Plan → Approval (Production Only) → Terraform Apply → AWS Resource Provisioning
 ```
 
 ---
