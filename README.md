@@ -63,39 +63,48 @@ The solution implements a complete CI/CD workflow for infrastructure provisionin
 ## 🏗️ System Architecture
 
 ```text
-Developer
-     │
-     ▼
+                               Developer
+                                   │
+                                   ▼
 
-GitHub Repository
-     │
-     ▼
+                           GitHub Repository
+                                   │
+                                   ▼
 
-GitHub Webhook
-     │
-     ▼
+                            GitHub Webhook
+                                   │
+                                   ▼
 
-Jenkins Multi-Branch Pipeline
-     │
-     ▼
+                    Jenkins Multi-Branch Pipeline
+                                   │
+                                   ▼
 
-Terraform Workflow
-     │
-     ├── Terraform Init
-     ├── Terraform Plan
-     ├── Approval Stage
-     └── Terraform Apply
-     │
-     ▼
+                           Terraform Workflow
+                                   │
+                   ┌───────────────┼───────────────┐
+                   │               │               │
+                   ▼               ▼               ▼
 
-AWS Infrastructure
-     │
-     ├── VPC
-     ├── Subnets
-     ├── EC2 Instances
-     └── S3 State Storage
+          Terraform Init   Terraform Plan   Approval Stage
+                                                   │
+                                                   ▼
+
+                                           Terraform Apply
+                                                   │
+                                                   ▼
+
+                             AWS Infrastructure
+                                   │
+                ┌──────────────────┼──────────────────┐
+                │                  │                  │
+                ▼                  ▼                  ▼
+
+              VPC              Subnets         EC2 Instances
+                                                     │
+                                                     ▼
+
+                                              S3 State Storage
 ```
-
 ---
 
 <details>
