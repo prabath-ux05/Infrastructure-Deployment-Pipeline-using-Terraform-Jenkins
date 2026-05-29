@@ -63,47 +63,13 @@ The solution implements a complete CI/CD workflow for infrastructure provisionin
 ## 🏗️ System Architecture
 
 ```text
-                               Developer
-                                   │
-                                   ▼
+Developer → GitHub Repository → GitHub Webhook → Jenkins Pipeline → Terraform Workflow → AWS Infrastructure
 
-                           GitHub Repository
-                                   │
-                                   ▼
+Terraform Workflow:
+Terraform Init → Terraform Plan → Approval Stage → Terraform Apply
 
-                            GitHub Webhook
-                                   │
-                                   ▼
-
-                    Jenkins Multi-Branch Pipeline
-                                   │
-                                   ▼
-
-                           Terraform Workflow
-                                   │
-                   ┌───────────────┼───────────────┐
-                   │               │               │
-                   ▼               ▼               ▼
-
-          Terraform Init   Terraform Plan   Approval Stage
-                                                   │
-                                                   ▼
-
-                                           Terraform Apply
-                                                   │
-                                                   ▼
-
-                             AWS Infrastructure
-                                   │
-                ┌──────────────────┼──────────────────┐
-                │                  │                  │
-                ▼                  ▼                  ▼
-
-              VPC              Subnets         EC2 Instances
-                                                     │
-                                                     ▼
-
-                                              S3 State Storage
+AWS Infrastructure:
+VPC → Subnets → EC2 Instances → S3 State Storage
 ```
 ---
 
